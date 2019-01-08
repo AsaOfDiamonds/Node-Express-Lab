@@ -62,7 +62,7 @@ server.post('/api/posts', (req, res) => {
             );
         });
 
-server.delete('/api/users/:id', (req, res) => {
+server.delete('/api/posts/:id', (req, res) => {
     const id = params.id;
 
     db.findById(id)
@@ -80,7 +80,7 @@ server.delete('/api/users/:id', (req, res) => {
         res.status(500).json({ message: "The post could not be removed" , error: err}) )
 }); 
 
-server.put('/api/users/:id', async (req, res) => {
+server.put('/api/posts/:id', async (req, res) => {
     const id = req.params.id;
     const changes = req.body;
 
