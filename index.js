@@ -10,7 +10,7 @@ var cors = require('cors')
 const server = express();
 
 
-server.use(cors({}));
+server.use(cors());
 
 
 // wire up global middleware
