@@ -8,7 +8,7 @@ const LeftSideBarNav = () => {
             <NavLink to='/'>
                 <button className='btn' type='button'>View LOTR Quotes</button>
             </NavLink>
-            <NavLink to='/api/posts' >
+            <NavLink to='/api/posts/create' >
                 <button className='btn' type='button'>+ Create New Quote</button>
             </NavLink>
         </div>

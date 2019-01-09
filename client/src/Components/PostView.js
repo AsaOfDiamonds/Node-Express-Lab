@@ -46,11 +46,11 @@ class PostView extends React.Component {
         return (
             <div className='post-view'>
                 <div className='post-view-edits'>
-                    <Link className='edit-link' to={`/api/posts/${this.state._id}`}>edit</Link>
+                    <Link className='edit-link' to={`/api/posts/${this.state.id}`}>edit</Link>
                     <h4 className='delete' onClick={this.showModal}>delete</h4>
                 </div>
                 <h2 className='post-view-title' >{this.state.title}</h2>
-                <p>{this.state.textBody}</p>
+                <p>{this.state.contents}</p>
                 {this.state.show ? (
                     <DeleteModal deletePost={this.deletePost} hideModal={this.hideModal} />
                 ) : null}

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class AddPost extends React.Component {
     constructor(props) {
@@ -9,12 +10,24 @@ class AddPost extends React.Component {
         };
     }
 
-    handleCreatePost = event => {
+    addPost = event => {
         event.preventDefault();
-        this.props.onSubmit(this.state);
-        this.setState({ title: '', contents: '' });
-        this.props.history.push('/');
-    };
+        // add code to create the Post using the api
+        const newPost = {
+            title: this.state.title,
+            contents: this.state.contents
+        }
+        axios
+            .post('http://localhost:8000/api/posts', newPost)
+            .then(response => {
+                console.log(response.data);
+                this.props.updatePosts(response.data);
+                this.props.history.push('/')
+            })
+            .catch(err => console.log(err));
+
+
+    }
 
     handleInputChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -23,7 +36,7 @@ class AddPost extends React.Component {
     render() {
         return (
             <div className='add-post'>
-                <form onSubmit={this.handleCreatePost}>
+                <form onSubmit={this.addPost}>
                     <h2>Create New Quote:</h2>
                     <input
                         type='text'
@@ -34,13 +47,13 @@ class AddPost extends React.Component {
                         required
                     />
                     <textarea
-                        name='textBody'
+                        name='contents'
                         placeholder='Quote by'
                         value={this.state.contents}
                         onChange={this.handleInputChange}
                         required
                     />
-                    <button className='btn' type='submit'>Save</button>
+                    <button className='btn' type='submit' onClick={this.addPost}>Save</button>
                 </form>
             </div>
         );

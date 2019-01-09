@@ -52,7 +52,7 @@ server.get('/api/posts/:id', (req, res) => {
         .catch(err => res.status(500).json({ message: 'The post information could not be retrieved.', error: err}));
 });
 
-server.post('/api/posts', (req, res) => {
+server.post('/api/posts/create', (req, res) => {
     const postInfo = req.body; // reads information from the body of the request
 
     db.insert(postInfo) // returns a promise, so we need to use .then
@@ -69,7 +69,7 @@ server.post('/api/posts', (req, res) => {
             );
         });
 
-server.delete('/api/posts/:id', (req, res) => {
+server.delete('/api/delete/:id', (req, res) => {
     const id = params.id;
 
     db.findById(id)
@@ -87,7 +87,7 @@ server.delete('/api/posts/:id', (req, res) => {
         res.status(500).json({ message: "The post could not be removed" , error: err}) )
 }); 
 
-server.put('/api/posts/:id', async (req, res) => {
+server.put('/api/edit/:id', async (req, res) => {
     const id = req.params.id;
     const changes = req.body;
 

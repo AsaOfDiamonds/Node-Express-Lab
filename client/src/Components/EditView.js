@@ -56,7 +56,7 @@ class EditView extends React.Component {
                         required
                     />
                     <textarea
-                        name='textBody'
+                        name='contents'
                         placeholder='Character Quoted'
                         value={this.state.contents}
                         onChange={this.handleInputChange}

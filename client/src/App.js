@@ -37,21 +37,21 @@ class App extends Component {
 
   handleSubmit = post => {
     axios
-      .post('http://localhost:8000/api/posts', post)
+      .post('http://localhost:8000/api/create', post)
       .then(() => this.updatePosts())
       .catch(err => console.log(err));
   }
 
   deletePost = id => {
     axios
-      .delete(`http://localhost:8000/api/posts/:id`)
+      .delete(`http://localhost:8000/api/delete/${id}`)
       .then(() => this.updatePosts())
       .catch(err => console.log(err));
   }
 
   editPost = (post, id) => {
     axios
-      .put(`http://localhost:8000/api/posts/:id`, post)
+      .put(`http://localhost:8000/api/edit/${id}`, post)
       .then(() => this.updatePosts())
       .catch(err => console.log(err));
   }
@@ -64,19 +64,19 @@ class App extends Component {
         <div className='app-content'>
           <Route exact path='/' render={() => <PostList posts={posts} />} />
           <Route
-            path='/api/posts'
+            path='/api/posts/create'
             render={(props) => (
               <AddPost {...props} onSubmit={this.handleSubmit} />
             )}
           />
           <Route
-            path='/api/posts/:id'
+            path='/api/view/:id'
             render={(props) => (
               <PostView {...props} posts={posts} deletePost={this.deletePost} />
             )}
           />
           <Route
-            path='/api/posts/:id'
+            path='/api/edit/:id'
             render={(props) => (
               <EditView {...props} posts={posts} onSubmit={this.editPost} />
             )}
