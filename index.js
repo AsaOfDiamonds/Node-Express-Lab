@@ -1,10 +1,17 @@
+
 // import your node modules
 // import db from './data/db.js'; // ES2015 Modules
 const express = require('express');
 const db = require('./data/db.js'); // CommonJS Modules
 
+var cors = require('cors')
+
 // add your server code starting here
 const server = express();
+
+
+server.use(cors({}));
+
 
 // wire up global middleware
 server.use(express.json());// teaches express how to parse json from the body

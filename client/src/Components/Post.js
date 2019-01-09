@@ -3,17 +3,17 @@ import React from 'react';
 const Post = props => {
     return (
         <div className="post">
-            <h3>{props.title}</h3>
-            <p>{props.contents}</p>
-            <h5>{props.created_at}</h5>
-            <h5>{props.updated_at}</h5>
+            <h2>{props.title}</h2>
+            <h3>{props.contents}</h3>
+            <p>Post created: {props.created_at}</p>
+            <p>Post updated: {props.updated_at}</p>
         </div>
     );
 };
 
 Post.defaultProps = {
     title: '',
-    content: '',
+    contents: '',
     created_at: '',
     updated_at: ''
 };

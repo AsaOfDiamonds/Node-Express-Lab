@@ -13,7 +13,7 @@ class Posts extends Component {
                             <Post
                                 title={post.title}
                                 id={post.id}
-                                content={post.content}
+                                contents={post.contents}
                                 created_at={post.created_at}
                                 updated_at={post.updated_at}
                                 key={post.id}
